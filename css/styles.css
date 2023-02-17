@@ -12,6 +12,7 @@
     --active-icons: #31D0AA;
     --footer-link-bg: rgba(255, 255, 255, 0.1);
     --hero-gradient: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   }
 html {
@@ -60,8 +61,7 @@ body {
 }
 .page-header {
     border-bottom: 1px solid var(--cornflower);
-    padding-top: 24px;
-    padding-bottom: 24px;
+    
     
 }
 .header-container {
@@ -95,20 +95,53 @@ body {
     
 }
 .nav-link {
+    display: block;
+    padding-top: 24px;
+    padding-bottom: 28px;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: var(--main-navy);
+    position: relative;
    
     
 }
 .nav-link:hover {
     color: var(--active-ocean);
+    transition: opacity 250ms var(--timing-function);
 }
 .nav-link:focus {
     text-decoration: underline;
     color: var(--active-ocean);
+    transition: opacity 250ms var(--timing-function);
+}
+.current {
+   
+    color: var(--active-ocean);
+    /*
+    display: block;
+    padding-bottom: 28px;
+    padding-top: 24px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;*/
+}
+.nav-link::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    background: var(--active-ocean);
+    border-radius: 2px;
+    height: 4px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 250ms var(--timing-function);
+}
+.current::after {
+    opacity: 1;
 }
 .address {
     color: var(--text-slate);
@@ -132,9 +165,11 @@ body {
 }
 .contact-link:hover {
     color: var(--active-ocean);
+    transition: opacity 250ms var(--timing-function);
 }
 .contact-link:focus {
     color: var(--active-ocean);
+    transition: opacity 250ms var(--timing-function);
 }
 .block {
     background-color: var(--main-navy);
@@ -493,6 +528,7 @@ body {
 .projects-card-link {
     display: block;
     cursor: pointer;
+    position: relative;
 }
 .projects-card-link:is(:hover, :focus) {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
@@ -524,4 +560,27 @@ body {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: var(--text-slate);
+}
+.project-img {
+    position: relative;
+}
+.projects-card-link::before {
+    display: inline-block;
+    content: "";
+    position: absolute;
+    background: var(--logo-iris);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 120px;
+    transform: translateY(-100%);
+    transition: transform 250mc var(--timing-function) ;
+    opacity: 0;
+}
+.projects-card-link:hover::before {
+    opacity: 1;
+}
+.projects-card-link .projects-card-link::before {
+    transform: translateY(0);
 }
