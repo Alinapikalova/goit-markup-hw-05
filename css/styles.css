@@ -12,6 +12,19 @@
     --active-icons: #31D0AA;
     --footer-link-bg: rgba(255, 255, 255, 0.1);
     --hero-gradient: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
+    --color-black: #000000;
+    --border-modal-close: 1px solid rgba(0, 0, 0, 0.1);
+    --team-card-box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+        0px 1px 1px rgba(46, 47, 66, 0.16),
+        0px 2px 1px rgba(46, 47, 66, 0.08);
+    --modal-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    --box-shadow-filters: 0px 3px 1px rgba(0, 0, 0, 0.1),
+        0px 2px 1px rgba(0, 0, 0, 0.08),
+        0px 2px 2px rgba(0, 0, 0, 0.12);
+    --backdrop-background: rgba(46, 47, 66, 0.4);
+    --modal-background: #FCFCFC;
 
   }
 html {
@@ -103,8 +116,8 @@ body {
     letter-spacing: 0.02em;
     color: var(--main-navy);
     position: relative;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: text-decoration 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        text-decoration 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
 }
 .nav-link:hover {
@@ -207,8 +220,8 @@ body {
     margin-top: 48px;
     padding: 16px 32px;
     border: none;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover {
     color: var(--main-white);
@@ -226,9 +239,8 @@ body {
     top: 0;
     left: 0;
     opacity: 1;
-    transition: opacity 250ms var(--timing-function);
-    -webkit-transition: opacity 250ms var(--timing-function);
-    background-color: rgba(46, 47, 66, 0.4);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--backdrop-background);
 }
 .backdrop.is-hidden {
     opacity: 0;
@@ -248,8 +260,8 @@ body {
     transform: translate(-50%, -50%) scale(1);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
-    background-color: #FCFCFC;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: var(--modal-background);
+    box-shadow: var(--modal-box-shadow);
    
 }
 .modal-close {
@@ -264,14 +276,19 @@ body {
     height: 24px;
     border-radius: 50%;
     cursor: pointer;
-    background: #E7E9FC;
-    color: black;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--cornflower);
+    color: var(--color-black);
+    border: var(--border-modal-close);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-icon {
 fill: currentColor;
 }
-
+.modal-close:is(:hover, :focus) {
+    color: var(--main-white);
+    background-color: var(--active-ocean);
+}
 /*---Add visually-hidden--*/
 .visually-hidden {
     position: absolute;
@@ -368,7 +385,7 @@ fill: currentColor;
     color: var(--main-navy);
     background-color: var(--main-white);
     width: calc((100% - 72px)/4);
-    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+    box-shadow: var(--team-card-box-shadow);
     border-radius: 0px 0px 4px 4px;
 }
 .card-content {
@@ -407,7 +424,7 @@ fill: currentColor;
     width: 40px;
 }
 .team-soc-link {
-    background: var(--logo-iris);
+    background-color: var(--logo-iris);
     color: var(--cornflower);
     width: 100%;
     height: 100%;
@@ -415,14 +432,13 @@ fill: currentColor;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-soc-icon {
     fill: currentColor;
 }
 .team-soc-link:is(:hover, :focus) {
-    background: var(--active-ocean);
+    background-color: var(--active-ocean);
     color: var(--cornflower);
 }
 /*------------Section 4 Customers---------*/
@@ -448,8 +464,8 @@ fill: currentColor;
     height: 100%;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customers-icon {
     fill: currentColor;
@@ -513,7 +529,7 @@ fill: currentColor;
 
 }
 .footer-soc-link {
-    background: var(--footer-link-bg);
+    background-color: var(--footer-link-bg);
     color: var(--back-cloud);
     width: 100%;
     height: 100%;
@@ -521,14 +537,14 @@ fill: currentColor;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-soc-icon {
     fill: currentColor;
 }
 .footer-soc-link:is(:hover, :focus) {
-    background: var(--active-icons);
+    background-color: var(--active-icons);
     color: var(--back-cloud);
 }
 
@@ -557,22 +573,22 @@ fill: currentColor;
     border: 1px solid var(--cornflower);
     border-radius: 4px;
     padding: 12px 24px;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filters:hover {
     color: var(--main-white);
     background-color: var(--active-ocean);
     border-color: transparent;
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--box-shadow-filters);
 }
 .filters:focus {
     color: var(--main-white);
     background-color: var(--active-ocean);
     border-color: transparent;
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--box-shadow-filters);
 }
 .projects {
     color: var(--main-navy);
@@ -583,18 +599,15 @@ fill: currentColor;
 }   
 .projects-card-link {
     display: block;
-    cursor: pointer;
     position: relative;
-    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-card-link:is(:hover, :focus) {
-    border: 1px solid var(--back-cloud);
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 .project-card {
     width: calc((100% - 48px)/3);
-    background: var(--main-white);
+    background-color: var(--main-white);
 
 
 }
@@ -631,7 +644,7 @@ fill: currentColor;
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: var(--back-cloud);
-    background: var(--logo-iris);
+    background-color: var(--logo-iris);
     padding: 40px 32px 164px 32px;
     top: 0;
     left: 0;
